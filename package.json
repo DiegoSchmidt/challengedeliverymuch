@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DiegoSchmidt/challengedeliverymuch/issues"
   },
-  "homepage": "https://github.com/DiegoSchmidt/challengedeliverymuch#readme"
+  "homepage": "https://github.com/DiegoSchmidt/challengedeliverymuch#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
