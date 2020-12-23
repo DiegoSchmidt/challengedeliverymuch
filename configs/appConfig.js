@@ -4,7 +4,8 @@
 let config = {
 
     "app" : {        
-        "portListener" : 3000
+        "portListener" : 3000,
+        "APIRecipePuppy" : "http://www.recipepuppy.com/api"
     }
 }
 

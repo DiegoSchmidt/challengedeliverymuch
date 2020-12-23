@@ -1,8 +1,15 @@
+/*
+    Processo de gerenciamento de rotas de receitas
+*/
+
 let express = require('express');
 let router = express.Router();
 
-router.get('/',function(request, response){
-    response.end('Rota OK');
-})
+let recipesController = require('../controllers/recipesController');
+
+router.get(
+    '/',
+    recipesController.find
+)
 
 module.exports = router;
