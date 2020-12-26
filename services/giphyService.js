@@ -17,15 +17,15 @@ module.exports = {
                 }
             })        
             .then((res) => {
-                if (res.ok){
+                if (res.ok){ //res.status >= 200 && res.status < 300
                     resolve(res.json());
                 }else{
-                    reject(retorno(res.status, "Falha ao buscar gif", res));
+                    reject(retorno(res.status, "Falha ao buscar gif", res));                    
                 }
             })            
             .catch((err) => {
                 console.log(err);
-                reject(retorno(999, "Erro ao buscar gif", err));
+                reject(retorno(999, "Erro ao buscar gif", err));           
             });
 
         });
