@@ -4,7 +4,10 @@
 let config = {
 
     "app" : {        
-        "portListener" : 3000
+        "portListener" : 3000,
+        "APIRecipePuppy" : "http://www.recipepuppy.com/api",
+        "APIGiphy" : "https://api.giphy.com/v1/gifs",
+        "APIGiphyKey" : "WYoAyh9oIrPEADZayi7xS3yi6FP412l7"
     }
 }
 
