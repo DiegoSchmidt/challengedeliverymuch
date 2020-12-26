@@ -1,13 +1,14 @@
 const express = require('express');
 let parser = require('body-parser');
+const dotenv = require("dotenv")
 let http = require('http');
 let app = express();
 
 //Busca arquivo de configurações
-let appConfig = require('../configs/appConfig');
+dotenv.config()
 
 //Levanta servidor HTTP na porta especificada no arquivo
-let server = http.createServer(app).listen(process.env.PORT || appConfig.app.portListener);
+let server = http.createServer(app).listen(process.env.APP_portListener);
 
 server.on('listening', function(){
     console.log('Server running on port ',server.address().port);

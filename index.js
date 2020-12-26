@@ -1,8 +1,8 @@
 //Inicializa o servidor da aplicação
-const serverInit = require('./server/init');
+const serverInit = require('./src/server/init');
 
 //Inicializa as rotas da aplicação
-let routes = require('./routes/init');
+let routes = require('./src/routes/init');
 serverInit.use('/', routes);
 
 //Rota raiz da aplicação

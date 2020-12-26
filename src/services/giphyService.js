@@ -1,36 +1,33 @@
 const fetch = require('node-fetch');
 const retorno = require('../utils/retornos');
-const config = require('../configs/appConfig');
 
-const api = config.app.APIRecipePuppy;
+let api = process.env.APP_APIGiphy;
+let apiKey = process.env.APP_APIGiphyKey;
 
 module.exports = {
 
-    get(ingredients){
-
+    search(text){
         return new Promise((resolve, reject) => {
 
-            fetch(`${api}/?i=${ingredients}`,{
+            fetch(`${api}/search?q=${text}&api_key=${apiKey}`,{
                 method: 'GET',
                 headers: {
                   'Content-Type': 'application/json',
                 }
             })        
             .then((res) => {
-                if (res.ok){
+                if (res.ok){ //res.status >= 200 && res.status < 300
                     resolve(res.json());
                 }else{
-                    reject(retorno(res.status, "Falha ao buscar receitas", res));
+                    reject(retorno(res.status, "Falha ao buscar gif", res));                    
                 }
             })            
             .catch((err) => {
                 console.log(err);
-                reject(retorno(999, "Erro ao buscar receitas", err));
+                reject(retorno(999, "Erro ao buscar gif", err));           
             });
 
         });
-
     }
-
 
 }
