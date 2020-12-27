@@ -2,14 +2,16 @@
     Processo de gerenciamento de rotas de receitas
 */
 
-let express = require('express');
-let router = express.Router();
+const express = require('express');
 
-let recipesController = require('../controllers/recipesController');
+const router = express.Router();
 
+const recipesController = require('../controllers/recipesController');
+
+// Novos metodos ou rotas especificas relacionadas a receitas podem ser adicionadas aqui
 router.get(
-    '/',
-    recipesController.find
-)
+  '/',
+  recipesController.find,
+);
 
 module.exports = router;

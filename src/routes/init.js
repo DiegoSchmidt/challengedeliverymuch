@@ -6,10 +6,12 @@
 */
 
 const express = require('express');
-let app = express();
 
-let recipesRoute = require('./recipesRoute');
+const app = express();
 
+const recipesRoute = require('./recipesRoute');
+
+// Rota relacionadas as receitas
 app.use('/recipes', recipesRoute);
 
 module.exports = app;

@@ -1,31 +1,34 @@
 const express = require('express');
-let parser = require('body-parser');
-const dotenv = require("dotenv")
-let http = require('http');
-let app = express();
+const parser = require('body-parser');
+const dotenv = require('dotenv');
+const http = require('http');
 
-//Busca arquivo de configurações
-dotenv.config()
+const app = express();
 
-//Levanta servidor HTTP na porta especificada no arquivo
-let server = http.createServer(app).listen(process.env.APP_portListener);
+// Busca arquivo de configurações
+dotenv.config();
 
-server.on('listening', function(){
-    console.log('Server running on port ',server.address().port);
-})
+// Levanta servidor HTTP na porta especificada no arquivo
+const server = http.createServer(app).listen(process.env.APP_portListener);
 
-server.on('error', function(error){
-    console.log(error);
-})
+server.on('listening', () => {
+  // eslint-disable-next-line no-console
+  console.log('Server running on port ', server.address().port);
+});
+
+server.on('error', (error) => {
+  // eslint-disable-next-line no-console
+  console.log(error);
+});
 
 app.use(parser.json());
 
-app.use(function(req, res, next) { //Habilita Cross Origin da aplicação
-    res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
-    res.header("Access-Control-Allow-Origin", req.headers.origin ? req.headers.origin : '*');
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Id, filetype, Authorization, codigoImovel, nome");
-    res.header("Access-Control-Allow-Credentials", true);
-    next();
-  });
-  
+app.use((req, res, next) => { // Habilita Cross Origin da aplicação
+  res.setHeader('Access-Control-Allow-Methods', 'POST, PUT, OPTIONS, DELETE, GET');
+  res.header('Access-Control-Allow-Origin', req.headers.origin ? req.headers.origin : '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Id, filetype, Authorization, codigoImovel, nome');
+  res.header('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 module.exports = app;
